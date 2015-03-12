@@ -1,0 +1,15 @@
+({
+  handleRunQueryEvent: function(cmp, event, helper){
+
+    var pQueryString = event.getParam("queryString");
+    
+    helper.getNewList(cmp, pQueryString);
+  },
+  
+	getOptions : function(cmp, event, helper) {
+	
+    cmp.find("InputSelectDynamic2").set("v.label", cmp.get("v.dropdownlabel"));
+    var querystring = cmp.get("v.query");
+    helper.getNewList(cmp, querystring);
+	}
+})
