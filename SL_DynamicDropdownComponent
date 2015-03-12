@@ -1,0 +1,8 @@
+<aura:component controller="LightningController" >
+    
+	<aura:handler name="init" value="{!this}" action="{!c.getOptions}" /> 
+    <aura:attribute name="query" type="String" />
+    <aura:attribute name="dropdownlabel" type="String" />
+	<ui:inputSelect label="Select me:" class="dynamic"  aura:id="InputSelectDynamic2"></ui:inputSelect>
+	<aura:handler event="c:SL_DynamicDropdown_runNewQueryEvent" action="{!c.handleRunQueryEvent}"/>
+</aura:component>
