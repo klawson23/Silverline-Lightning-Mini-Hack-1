@@ -1,0 +1,18 @@
+<aura:application >
+    
+    
+  <aura:registerEvent name="runNewQuery" type="c:SL_DynamicDropdown_runNewQueryEvent"/>
+	<div> Dynamic Drop Down Lightning App</div>
+  <br />
+  <ui:inputSelect label="Simple Static Drop Down:" class="dynamic"  aura:id="InputSelectDynamic" >
+  </ui:inputSelect>
+  <br />
+  Enter query below:
+  <ui:inputText aura:id="inputTextBox" value="select Id, Name from account limit 2"></ui:inputText>
+  <ui:button label="execute" press="{!c.runUpdateQueryEvent}"></ui:button>
+
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    
+  <c:TestGeanLightningDynamicDropdown dropdownlabel="Dynamic Drop Down: "  aura:id="dynamicDropDown" query="SELECT ID, Name from Currency__c"/>
+        
+</aura:application>
