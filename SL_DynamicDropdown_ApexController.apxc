@@ -1,0 +1,38 @@
+public class LightningController {
+ @AuraEnabled
+ public static List<string> getSelectOptions() {     
+     return new list<string>{'greg','kyle','Gean','Eric'};
+ }
+ 
+    
+ @AuraEnabled
+ public static List<AuraSelectOptions> getAuraSelectOptions() {
+     list<AuraSelectOptions> aso = new list<AuraSelectOptions>();
+     
+     return aso;
+ }
+    
+    @AuraEnabled
+	public static string runQuery(string querystr) {
+         list<Sobject> objs = database.query(querystr);
+         system.debug(objs);
+         list<AuraSelectOptions> aso = new list<AuraSelectOptions>();
+         for(Sobject obj : objs)
+         {
+             aso.add(new AuraSelectOptions((string) obj.get('name'),(string) obj.get('id'),false));
+         }
+         system.debug(aso);
+    	 return json.serialize(aso);
+	 }
+    
+    public class AuraSelectOptions{
+        public string label, value;
+        public boolean selected;
+        public AuraSelectOptions(string label, string value, boolean selected){
+            this.label = label;
+            this.value = value;
+            this.selected = selected;
+        }
+    }
+     
+}
